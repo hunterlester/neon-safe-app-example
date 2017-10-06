@@ -10,6 +10,16 @@ const url = require('url');
 let shell = require('electron').shell;
 let ipcMain = require('electron').ipcMain;
 const safeAppNeon = require('safe_app_neon');
+safeAppNeon.install(process.execPath);
+
+ipcMain.on('gen-auth', (event) => {
+  const authUri = safeAppNeon.gen_auth_uri();
+  shell.openExternal(parseUrl(authUri));
+});
+
+const parseUrl = (url) => (
+  (url.indexOf('safe-auth://') === -1) ? url.replace('safe-auth:', 'safe-auth://') : url
+);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -41,20 +51,6 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
-
-  const listenForAuthReponse = (event, response) => {
-    console.log(response);
-  };
-
-  ipcMain.on('auth-response', listenForAuthReponse);
-
-  const parseUrl = (url) => (
-    (url.indexOf('safe-auth://') === -1) ? url.replace('safe-auth:', 'safe-auth://') : url
-  );
-
-  let authUri = safeAppNeon.gen_auth_uri();
-
-  shell.openExternal(parseUrl(authUri));
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

@@ -1,5 +1,5 @@
 {
-  "name": "test-neon-app",
+  "name": "neon-app-example",
   "version": "0.1.0",
   "description": "utilises neon library",
   "main": "main.js",

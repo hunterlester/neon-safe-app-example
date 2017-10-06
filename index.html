@@ -5,15 +5,18 @@
     <title>Hello, SAFE World!</title>
   </head>
   <body>
-    <h1>Hello, SAFE World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <h1>Rust, Neon, SAFE</h1>
+    <p>This app is using addons created via Neon to interface with non-FFI Rust libraries.</p>
+    <p>It was just installed to your registry using system_uri.</p>
+    <p>Click button below to obtain auth URI:</p>
+    <button type="button" id='genAuthUri'>Get auth uri</button>
+    <div id="output">
+
+    </div>
   </body>
 
   <script>
     // You can also require other files to run in this process
-    // require('./renderer.js')
+    require('./renderer.js')
   </script>
 </html>
