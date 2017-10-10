@@ -2,6 +2,8 @@
 
 At the time of this commit, this application very simply uses maidsafe/system_uri to register app with system and provides a button to generate and receive an auth URI from a mock routing SAFE Browser authenticator.
 
+See safe_app_neon libarary on which this app depends: https://github.com/hunterlester/safe_app_neon
+
 ##### Goals:
 - Discuss with MaidSafe devs the issues of using FFI layer
 - Explore feasibility of using [Neon](https://www.neon-bindings.com/)
