@@ -20,3 +20,5 @@ See me for details if you run into issues during compilation, especially on Wind
 ##### Next steps
 - Allow customisation of requested containers and respective permissions (currently hard coded);
 - I'll continue to work on this library in my free time to further implement further safe_client_libs functions
+- Run clippy on safe_app_neon library to improve code 
+- Implement useful tests in safe_app_neon library
