@@ -6,29 +6,6 @@ genAuthButton.addEventListener('click', () => {
   ipcRenderer.send('gen-auth');
 });
 
-const appInfo = {
-	'id': 'net.safe.app.base.mock',
-	'name': 'SAFE app base',
-	'vendor': 'MaidSafe Ltd.'
-}
-
-const containers = {
-  _public: [
-    'Read',
-    'Insert',
-    'Update',
-    'Delete',
-    'ManagePermissions'
-  ],
-  _publicNames: [
-    'Read',
-    'Insert',
-    'Update',
-    'Delete',
-    'ManagePermissions'
-  ]
-};
-
 const listenForAuthReponse = (event, response) => {
   console.log('auth response!!!!!');
   console.log(response);

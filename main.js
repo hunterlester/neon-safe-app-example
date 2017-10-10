@@ -10,10 +10,20 @@ const url = require('url');
 let shell = require('electron').shell;
 let ipcMain = require('electron').ipcMain;
 const safeAppNeon = require('safe_app_neon');
-safeAppNeon.install(process.execPath);
+
+const appInfo = {
+  id: "test.id.neon",
+  vendor: "MAIDSAFE",
+  name: "TEST APP",
+  scope: null,
+  icon: "test",
+  exec: process.execPath
+}
+
+safeAppNeon.install(JSON.stringify(appInfo));
 
 ipcMain.on('gen-auth', (event) => {
-  const authUri = safeAppNeon.gen_auth_uri();
+  const authUri = safeAppNeon.gen_auth_uri(JSON.stringify(appInfo));
   shell.openExternal(parseUrl(authUri));
 });
 
