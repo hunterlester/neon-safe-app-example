@@ -20,10 +20,29 @@ const appInfo = {
   exec: process.execPath
 }
 
+const permissions = {
+  _public: [
+    'Read',
+    'Insert',
+    'Update',
+    'Delete',
+    'ManagePermissions'
+  ],
+  _publicNames: [
+    'Read',
+    'Insert',
+    'Update',
+    'Delete',
+    'ManagePermissions'
+  ]
+};
+
+const ownContainer = true;
+
 safeAppNeon.install(JSON.stringify(appInfo));
 
 ipcMain.on('gen-auth', (event) => {
-  const authUri = safeAppNeon.gen_auth_uri(JSON.stringify(appInfo));
+  const authUri = safeAppNeon.gen_auth_uri(JSON.stringify(appInfo), JSON.stringify(permissions), ownContainer);
   shell.openExternal(parseUrl(authUri));
 });
 
