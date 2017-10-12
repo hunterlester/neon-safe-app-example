@@ -1,5 +1,4 @@
-let shell = require('electron').shell;
-let ipcRenderer = require('electron').ipcRenderer;
+const ipcRenderer = require('electron').ipcRenderer;
 
 const genAuthButton = document.getElementById('genAuthUri');
 genAuthButton.addEventListener('click', () => {

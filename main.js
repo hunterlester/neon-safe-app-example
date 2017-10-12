@@ -1,14 +1,9 @@
 const electron = require('electron')
-// Module to control application life.
 const app = electron.app;
-// Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-
 const path = require('path');
 const url = require('url');
-
-let shell = require('electron').shell;
-let ipcMain = require('electron').ipcMain;
+const ipcMain = require('electron').ipcMain;
 const safeAppNeon = require('safe_app_neon');
 
 const appInfo = {
@@ -43,12 +38,8 @@ safeAppNeon.install(JSON.stringify(appInfo));
 
 ipcMain.on('gen-auth', (event) => {
   const authUri = safeAppNeon.gen_auth_uri(JSON.stringify(appInfo), JSON.stringify(permissions), ownContainer);
-  shell.openExternal(parseUrl(authUri));
+  safeAppNeon.open(authUri);
 });
-
-const parseUrl = (url) => (
-  (url.indexOf('safe-auth://') === -1) ? url.replace('safe-auth:', 'safe-auth://') : url
-);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
